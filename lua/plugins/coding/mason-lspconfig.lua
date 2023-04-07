@@ -11,7 +11,7 @@ return {
       'BufEnter',
     },
     config = function()
-      local lsp = require('config.lsp')
+      local lsp = require('core.lsp')
       require('mason-lspconfig').setup({
         -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
         -- This setting has no relation with the `automatic_installation` setting.

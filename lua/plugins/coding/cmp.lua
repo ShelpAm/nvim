@@ -16,6 +16,7 @@ return {
     config = function()
       local cmp = require('cmp')
       local lspkind = require('lspkind')
+
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -28,7 +29,7 @@ return {
           -- documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs( -4),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
           ['<tab>'] = cmp.mapping.select_next_item(),

@@ -4,10 +4,12 @@ local M = {}
 vim.g.mapleader = ' '
 vim.g.localmapleader = ' '
 
+local keymap = vim.keymap
+
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
   opts.silent = true
-  return vim.keymap.set(mode, lhs, rhs, opts)
+  return keymap.set(mode, lhs, rhs, opts)
 end
 
 local function noremap(mode, lhs, rhs)
@@ -26,23 +28,17 @@ local function inoremap(lhs, rhs)
   return noremap('i', lhs, rhs)
 end
 
-function M.nnoremap(lhs, rhs)
-  return nnoremap(lhs, rhs)
-end
-
-function M.vnoremap(lhs, rhs)
-  return vnoremap(lhs, rhs)
-end
-
-function M.inoremap(lhs, rhs)
-  return inoremap(lhs, rhs)
-end
-
 -- Move to window using the <ctrl> hjkl keys
 map('n', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
 map('n', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
+
+-- Resize with arrows
+map("n", "<C-Up>", "<Cmd>resize -1<Cr>", { desc = "" })
+map("n", "<C-Down>", "<Cmd>resize +1<Cr>", { desc = "" })
+map("n", "<C-Left>", "<Cmd>vertical resize -1<Cr>", { desc = "" })
+map("n", "<C-Right>", "<Cmd>vertical resize +1<Cr>", { desc = "" })
 
 -- Better buffer navigation
 map('n', '<S-h>', '<cmd>bp<cr>', { desc = 'Prev buffer' })

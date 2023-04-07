@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 opt.autoread = true
-opt.autowrite = true -- Enable auto write
+opt.autowrite = false -- Enable auto write
 opt.background = 'dark'
 opt.binary = true
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
