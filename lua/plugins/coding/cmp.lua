@@ -7,47 +7,36 @@ return {
       'davidsierradz/cmp-conventionalcommits',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
+      'L3MON4D3/LuaSnip',
     },
-    event = {
-      'BufEnter',
-    },
+    event = { 'BufEnter', },
     config = function()
       local cmp = require('cmp')
-      local lspkind = require('lspkind')
-
+      local luasnip = require('luasnip')
       cmp.setup({
         snippet = {
-          -- REQUIRED - you must specify a snippet engine
           expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
-        window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
-        },
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete({}),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          ['<tab>'] = cmp.mapping.select_next_item(),
-          ['<C-space>'] = cmp.mapping.complete({}),
-          ['<C-e>'] = cmp.mapping.abort(),
-          -- Accept currently selected item. Set `select` to `false` to only confirm
-          -- explicitly selected items.
+          ['<Tab>'] = cmp.mapping.select_next_item(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-C>'] = cmp.mapping.abort(),
+          ['<C-U>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-D>'] = cmp.mapping.scroll_docs(4),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'vsnip' },
+          { name = 'luasnip' },
         }, {
           { name = 'buffer' },
           { name = 'path' },
         }),
         formatting = {
-          format = lspkind.cmp_format(),
+          format = require('lspkind').cmp_format(),
         },
       })
 

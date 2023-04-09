@@ -12,21 +12,14 @@ local function map(mode, lhs, rhs, opts)
   return keymap.set(mode, lhs, rhs, opts)
 end
 
-local function noremap(mode, lhs, rhs)
-  return map(mode, lhs, rhs, { noremap = true, silent = true })
+function M.map(mode, lhs, rhs, opts)
+  return map(mode, lhs, rhs, opts)
 end
 
-local function nnoremap(lhs, rhs)
-  return noremap('n', lhs, rhs)
-end
-
-local function vnoremap(lhs, rhs)
-  return noremap('v', lhs, rhs)
-end
-
-local function inoremap(lhs, rhs)
-  return noremap('i', lhs, rhs)
-end
+-- Native command mappings
+map('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Write buffer' })
+map('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit' })
+map('n', '<C-A>', 'gg<S-V>G')
 
 -- Move to window using the <ctrl> hjkl keys
 map('n', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
@@ -49,9 +42,6 @@ map('n', ']b', '<cmd>bn<cr>', { desc = 'Next buffer' })
 -- Buffer
 map('n', '<leader>bd', '<cmd>bd<cr>')
 
--- Window
-map('n', '<leader>wq', '<cmd>q<cr>', { desc = 'Quit current window' })
-
 -- Move Lines
 map('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
 map('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
@@ -61,10 +51,10 @@ map('v', '<A-j>', ':m ">+1<cr>gv=gv', { desc = 'Move down' })
 map('v', '<A-k>', ':m "<-2<cr>gv=gv', { desc = 'Move up' })
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-map('n', '<leader>d', vim.diagnostic.open_float)
+--map('n', '<leader>d', vim.diagnostic.open_float)
 map('n', '[d', vim.diagnostic.goto_prev)
 map('n', ']d', vim.diagnostic.goto_next)
-map('n', '<leader>q', vim.diagnostic.setloclist)
+--map('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Toggle Spelling
 map('n', '<leader>ts', '<cmd>set spell!<cr>', { desc = 'Toggle spelling check' })
