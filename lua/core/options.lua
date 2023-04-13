@@ -61,6 +61,35 @@ opt.wrap = false                   -- Line wrap
 
 vim.bo.autoread = true
 
+-- If you want icons for diagnostic errors, you'll need to define them somewhere:
+vim.fn.sign_define({
+  {
+    name = "DiagnosticSignError",
+    text = "",
+    texthl = "DiagnosticSignError",
+    linehl = 'ErrorLine',
+  },
+  {
+    name = "DiagnosticSignWarn",
+    text = "",
+    texthl = "DiagnosticSignWarn",
+    linehl = 'WarningLine',
+  },
+  {
+    name = "DiagnosticSignInfo",
+    text = "",
+    texthl = "DiagnosticSignInfo",
+    linehl = 'InfoLine',
+  },
+  {
+    name = "DiagnosticSignHint",
+    text = "",
+    texthl = "DiagnosticSignHint",
+    linehl = 'HintLine',
+  },
+})
+
+
 if vim.fn.has('nvim-0.9.0') == 1 then
   opt.splitkeep = 'screen'
   opt.shortmess:append { C = true }

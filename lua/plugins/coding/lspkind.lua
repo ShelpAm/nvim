@@ -5,8 +5,7 @@ return {
       'BufEnter',
     },
     config = function()
-      local lspkind = require('lspkind')
-      lspkind.init({
+      require('lspkind').init({
         -- defines how annotations are shown
         -- default: symbol
         -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
