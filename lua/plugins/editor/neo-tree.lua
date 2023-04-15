@@ -8,16 +8,12 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      -- { '\\', '<cmd>Neotree reveal toggle<cr>' },
-      -- { '<leader>e', '<cmd>Neotree reveal<cr>' },
-      { '<leader>e', '<cmd>Neotree reveal toggle<cr>' },
+      -- See :h neo-tree-commands
+      --{ '<leader>e', '<Cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true<Cr>' },
+      { '<leader>e', '<Cmd>Neotree action=focus source=filesystem float toggle=true reveal=true<Cr>' },
     },
-    init = function()
-      -- Unless you are still migrating, remove the deprecated commands from v1.c-x
-      -- Old version: vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-      vim.g.neo_tree_remove_legacy_commands = 1
-    end,
     config = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
       require('neo-tree').setup({
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
@@ -92,10 +88,11 @@ return {
             nowait = true,
           },
           mappings = {
-            ["<tab>"] = {
-              "toggle_node",
-              nowait = true,
-            },
+            --["<tab>"] = {
+            --  "toggle_node",
+            --  nowait = true,
+            --},
+            ["<tab>"] = 'open',
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
             ["<esc>"] = "revert_preview",
