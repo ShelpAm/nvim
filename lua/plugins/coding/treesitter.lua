@@ -21,6 +21,8 @@ return {
           'cpp',
           'gitcommit',
           'glsl',
+          'json',
+          'javascript',
           'lua',
           'vim',
           'yaml',

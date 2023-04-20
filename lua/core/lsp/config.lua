@@ -24,6 +24,7 @@ M.servers = {
   'clangd',
   'cmake',
   'lua_ls',
+  'quick_lint_js',
 }
 
 return M

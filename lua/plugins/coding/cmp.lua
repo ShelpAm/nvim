@@ -69,7 +69,6 @@ return {
       -- Set configuration for specific filetype.
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
-          -- TODO
           { name = 'conventionalcommits' },
         }, {
           { name = 'buffer' },
