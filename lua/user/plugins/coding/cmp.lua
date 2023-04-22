@@ -28,7 +28,14 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping.complete({}),
+          -- ['<C-Space>'] = cmp.mapping.complete({}),
+          ['<C-Space>'] = cmp.mapping.complete({
+            config = {
+              sources = {
+                { name = 'conventionalcommits' },
+              },
+            },
+          }),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<C-C>'] = cmp.mapping.abort(),
           ['<C-B>'] = cmp.mapping.scroll_docs(-4),
@@ -54,13 +61,13 @@ return {
             end
           end, { "i", "s" }),
         }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-        }, {
-          { name = 'buffer' },
-          { name = 'path' },
-        }),
+        sources = cmp.config.sources(
+          { { name = 'conventionalcommits' } },
+          { { name = 'nvim_lsp' } },
+          { { name = 'luasnip' } },
+          { { name = 'buffer' } },
+          { { name = 'path' } }
+        ),
         formatting = {
           format = require('lspkind').cmp_format(),
         },
@@ -68,12 +75,11 @@ return {
 
       -- Set configuration for specific filetype.
       cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources({
-          { name = 'conventionalcommits' },
-        }, {
-          { name = 'buffer' },
-          { name = 'path' },
-        })
+        sources = cmp.config.sources(
+          { { name = 'conventionalcommits' }, },
+          { { name = 'buffer' }, },
+          { { name = 'path' }, }
+        )
       })
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

@@ -1,6 +1,1 @@
-require('core.autocmds')
-require('core.keymaps')
-require('core.options')
-
-require('core.lazy')
-require('core.lsp').setup()
+require('init')

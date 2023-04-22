@@ -14,27 +14,27 @@ vim.opt.rtp:prepend(lazypath)
 -- Use :h lazy.nvim-lazy.nvim-installation
 require('lazy').setup({
   -- { import = 'plugins' },
-  { import = 'plugins.coding' },
-  { import = 'plugins.colorscheme' },
-  { import = 'plugins.editor' },
-  { import = 'plugins.ui' },
-  { import = 'plugins.util' },
+  { import = 'user.plugins.coding' },
+  { import = 'user.plugins.colorscheme' },
+  { import = 'user.plugins.editor' },
+  { import = 'user.plugins.ui' },
+  { import = 'user.plugins.util' },
 }, {
   root = vim.fn.stdpath('data') .. '/lazy', -- directory where plugins will be installed
   defaults = {
-    lazy = true, -- should plugins be lazy-loaded?
+    lazy = true,                            -- should plugins be lazy-loaded?
     -- version = '*',
     -- version = '*', -- enable this to try installing the latest stable versions of plugins
   },
   -- leave nil when passing the spec as the first argument to setup()
   spec = nil, ---@type LazySpec
-  lockfile = vim.fn.stdpath('config') .. '/lazy-lock.json', -- lockfile generated after running update.
+  lockfile = vim.fn.stdpath('config') .. '/tmp/lazy-lock.json', -- lockfile generated after running update.
   concurrency = nil, ---@type number limit the maximum amount of concurrent tasks
   git = {
     -- defaults for the `Lazy log` command
     -- log = { '-10' }, -- show the last 10 commits
     log = { '--since=3 days ago' }, -- show commits from the last 3 days
-    timeout = 120, -- kill processes that take more than 2 minutes
+    timeout = 120,                  -- kill processes that take more than 2 minutes
     url_format = 'https://github.com/%s.git',
     -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
     -- then set the below to false. This is should work, but is NOT supported and will
@@ -45,14 +45,14 @@ require('lazy').setup({
     -- directory where you store your local plugin projects
     path = '~/projects',
     ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-    patterns = {}, -- For example {'folke'}
+    patterns = {},    -- For example {'folke'}
     fallback = false, -- Fallback to git when local plugin doesn't exist
   },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = true,
     -- try to load one of these colorschemes when starting an installation during startup
-    colorscheme = { require('core.colorscheme').colorscheme },
+    -- colorscheme = { require('core.colorscheme').colorscheme },
     -- colorscheme = { 'catppuccin' },
   },
   ui = {
@@ -98,7 +98,6 @@ require('lazy').setup({
           cwd = plugin.dir,
         })
       end,
-
       -- open a terminal for the plugin dir
       ['<localleader>t'] = function(plugin)
         require('lazy.util').float_term(nil, {
@@ -120,7 +119,7 @@ require('lazy').setup({
     -- automatically check for plugin updates
     enabled = false,
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-    notify = true, -- get a notification when new updates are found
+    notify = true,    -- get a notification when new updates are found
     frequency = 3600, -- check for updates every hour
   },
   change_detection = {
@@ -134,9 +133,9 @@ require('lazy').setup({
     },
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+      reset = true,        -- reset the runtime path to $VIMRUNTIME and your config directory
       ---@type string[]
-      paths = {}, -- add any custom paths here that you want to includes in the rtp
+      paths = {},          -- add any custom paths here that you want to includes in the rtp
       ---@type string[] list any plugins you want to disable here
       disabled_plugins = {
         -- 'gzip',

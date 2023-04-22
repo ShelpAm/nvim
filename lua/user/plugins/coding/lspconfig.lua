@@ -9,7 +9,7 @@ return {
       'BufEnter',
     },
     config = function()
-
+      require('user.core.lsp').setup()
     end
   },
 }

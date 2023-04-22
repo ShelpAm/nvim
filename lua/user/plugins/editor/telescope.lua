@@ -12,7 +12,7 @@ return {
       'Telescope',
     },
     config = function()
-      local map = require('core.keymaps').map
+      local map = require('user.core.keymaps').map
       local builtin = require('telescope.builtin')
       map('n', '<leader>f', builtin.find_files, { desc = 'Find files' })
       map('n', '<leader>g', builtin.live_grep, { desc = 'Live grep' })
