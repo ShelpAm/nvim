@@ -28,14 +28,7 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          -- ['<C-Space>'] = cmp.mapping.complete({}),
-          ['<C-Space>'] = cmp.mapping.complete({
-            config = {
-              sources = {
-                { name = 'conventionalcommits' },
-              },
-            },
-          }),
+          ['<C-Space>'] = cmp.mapping.complete({}),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<C-C>'] = cmp.mapping.abort(),
           ['<C-B>'] = cmp.mapping.scroll_docs(-4),

@@ -1,10 +1,11 @@
-local config = require('core.lsp.config')
+local config = require('user.core.lsp.config')
 
 require('lspconfig').lua_ls.setup({
   -- Add additional capabilities supported by nvim-cmp
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = config.on_attach,
   settings = {
+    root_dir = vim.fs.dirname('lua'),
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)

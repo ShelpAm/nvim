@@ -1,4 +1,4 @@
-local config = require('core.lsp.config')
+local config = require('user.core.lsp.config')
 
 require('lspconfig').clangd.setup({
   -- Add additional capabilities supported by nvim-cmp

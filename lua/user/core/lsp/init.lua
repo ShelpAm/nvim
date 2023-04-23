@@ -2,11 +2,11 @@ local M = {}
 
 local config = require('user.core.lsp.config')
 
+-- Default configurations
 local function load_default_config()
-  -- Default configurations
+  -- print('[Debug] Invoking load_default_config')
   local lspconfig = require('lspconfig')
   for _, server in ipairs(config.servers) do
-    print(server)
     lspconfig[server].setup({
       capabilities = require('cmp_nvim_lsp').default_capabilities(),
       on_attach = config.on_attach,
@@ -14,10 +14,14 @@ local function load_default_config()
   end
 end
 
+-- Specific configurations
 local function load_specific_config()
-  -- Specific configurations
+  require('user.core.lsp.clangd')
+  -- print('[Debug] Invoking load_specific_config')
   for _, server in ipairs(config.servers) do
-    pcall(require, 'user.core.lsp.' .. server)
+    local module_name = 'user.core.lsp.' .. server
+    local ok, m = pcall(require, module_name)
+    -- print('[Debug] module_name=' .. module_name .. ' ok=' .. tostring(ok))
   end
 end
 
