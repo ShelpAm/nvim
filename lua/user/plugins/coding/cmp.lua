@@ -30,7 +30,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete({}),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<C-C>'] = cmp.mapping.abort(),
+          ['<C-E>'] = cmp.mapping.abort(),
           ['<C-B>'] = cmp.mapping.scroll_docs(-4),
           ['<C-F>'] = cmp.mapping.scroll_docs(4),
           ['<Tab>'] = cmp.mapping(function(fallback)
@@ -55,7 +55,6 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources(
-          { { name = 'conventionalcommits' } },
           { { name = 'nvim_lsp' } },
           { { name = 'luasnip' } },
           { { name = 'buffer' } },
@@ -69,9 +68,9 @@ return {
       -- Set configuration for specific filetype.
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources(
-          { { name = 'conventionalcommits' }, },
-          { { name = 'buffer' }, },
-          { { name = 'path' }, }
+          { { name = 'conventionalcommits' } },
+          { { name = 'buffer' } },
+          { { name = 'path' } }
         )
       })
 

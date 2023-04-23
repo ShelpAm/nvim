@@ -16,7 +16,6 @@ end
 
 -- Specific configurations
 local function load_specific_config()
-  require('user.core.lsp.clangd')
   -- print('[Debug] Invoking load_specific_config')
   for _, server in ipairs(config.servers) do
     local module_name = 'user.core.lsp.' .. server

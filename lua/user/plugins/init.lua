@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Use :h lazy.nvim-lazy.nvim-installation
 require('lazy').setup({
-  -- { import = 'plugins' },
   { import = 'user.plugins.coding' },
   { import = 'user.plugins.colorscheme' },
   { import = 'user.plugins.editor' },

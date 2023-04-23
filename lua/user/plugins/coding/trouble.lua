@@ -1,9 +1,7 @@
 return {
   {
     'folke/trouble.nvim',
-    event = {
-      'BufEnter',
-    },
+    event = { 'BufEnter', },
     depedencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('trouble').setup({
