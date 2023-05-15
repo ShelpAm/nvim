@@ -1,7 +1,8 @@
 local opt = vim.opt
 
 opt.autoread = true
-opt.autowrite = true -- Enable auto write
+opt.autowrite = true    -- Enable auto write
+opt.autowriteall = true -- Enable auto write all the files
 opt.background = 'dark'
 opt.binary = true
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -9,7 +10,7 @@ opt.colorcolumn = { '+0', '+20' }
 opt.cmdheight = 1
 opt.completeopt = 'menu,menuone,noselect'
 opt.conceallevel = 3           -- Hide * markup for bold and italic
-opt.confirm = true             -- Confirm to save changes before exiting modified buffer
+opt.confirm = false            -- Confirm to save changes before exiting modified buffer
 opt.cursorcolumn = false       -- Disable highlighting of the current column
 opt.cursorline = true          -- Enable highlighting of the current line
 opt.encoding = 'utf-8'
@@ -50,7 +51,7 @@ opt.tabstop = 2          -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.textwidth = 80
 opt.timeout = true
-opt.timeoutlen = 300
+opt.timeoutlen = 100
 --opt.undodir = "$XDG_STATE_HOME/nvim/undo/"
 opt.undofile = true
 opt.undolevels = 10000
@@ -89,6 +90,7 @@ vim.fn.sign_define({
   },
 })
 
+vim.cmd('highlight CursorLine guifg= guibg=')
 
 if vim.fn.has('nvim-0.9.0') == 1 then
   opt.splitkeep = 'screen'

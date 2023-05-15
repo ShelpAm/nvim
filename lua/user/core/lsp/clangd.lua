@@ -7,7 +7,20 @@ require('lspconfig').clangd.setup({
   settings = {
     root_dir = vim.fs.find('.git', '.clangd', '.clang-format'),
     clangd = {
-
+      arguments = {
+        "--all-scopes-completion",
+        '--background-index',
+        "--compile-commands-dir=build/Debug",
+        '--clang-tidy',
+        "--clang-tidy-checks=performance-*,bugprone-*",
+        '--compile-commands-dir=build',
+        "--completion-style=detailed",
+        '--function-arg-placeholders',
+        "--header-insertion=iwyu",
+        "--j=4",
+        "--log=error",
+        "--pch-storage=disk",
+      },
     },
   },
 })
