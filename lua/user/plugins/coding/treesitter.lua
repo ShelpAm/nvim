@@ -2,7 +2,8 @@ return {
   -- Highlight supports
   {
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufEnter',
+    enabled = true,
+    event = { 'BufEnter' },
     build = ':TSUpdate',
     config = function()
       local configs = require('nvim-treesitter.configs')
@@ -14,19 +15,7 @@ return {
         -- If a custom path is used (not nil) it must be added to the runtimepath.
         parser_install_dir = nil,
         -- A list of parser names, or "all"
-        ensure_installed = {
-          'bash',
-          'c',
-          'cmake',
-          'cpp',
-          'gitcommit',
-          'glsl',
-          'json',
-          'javascript',
-          'lua',
-          'vim',
-          'yaml',
-        },
+        ensure_installed = {},
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
         -- Automatically install missing parsers when entering buffer
@@ -60,7 +49,7 @@ return {
       })
       install.prefer_git = true
       --[[install.command_extra_args = {
-        curl = { "--proxy", "127.0.0.1" },
+        curl = { "--proxy", "192.168.10.43:31181" },
       }]]
     end
   },

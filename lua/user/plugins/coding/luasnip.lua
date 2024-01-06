@@ -1,7 +1,7 @@
 return {
   {
     "L3MON4D3/LuaSnip",
-    version = "<CurrentMajor>.*",
+    version = "2.*",
     build = "make install_jsregexp"
   }
 }

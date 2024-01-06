@@ -16,13 +16,17 @@ function M.map(mode, lhs, rhs, opts)
   return map(mode, lhs, rhs, opts)
 end
 
+-- Use `jk` to escape
+map('i', 'jk', '<esc>', { desc = 'Escape' })
+map('i', 'kj', '<esc>', { desc = 'Escape' })
+
 -- Native command mappings
-map('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Write buffer' })
-map('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit' })
-map('n', '<C-A>', 'gg<S-V>G')
+map('n', '<leader>w', '<Cmd>w<CR>', { desc = '[W]rite Buffer' })
+map({ 'i', 'v', 'n', 's' }, '<C-S>', '<Cmd>w<Cr><Esc>', { desc = 'Save file' })
+map('n', '<leader>q', '<Cmd>q<CR>', { desc = '[Q]uit' })
 
 -- Move to window using the <ctrl> hjkl keys
-map('n', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
+map('n', '<C-h>', '<C-w>h', { desc = '[G]o to left window' })
 map('n', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
@@ -56,16 +60,10 @@ map('n', '[d', vim.diagnostic.goto_prev)
 map('n', ']d', vim.diagnostic.goto_next)
 --map('n', '<leader>q', vim.diagnostic.setloclist)
 
--- Toggle Spelling
-map('n', '<leader>ts', '<cmd>set spell!<cr>', { desc = 'Toggle spelling check' })
-map('n', '<leader>th', '<cmd>set hlsearch!<cr>', { desc = 'Toggle hlsearch' })
+map('n', '<leader>ts', '<cmd>set spell!<cr>', { desc = '[T]oggle [S]pelling check' })
+map('n', '<leader>th', '<cmd>set hlsearch!<cr>', { desc = '[T]oggle [H]lsearch' })
 
--- Save file
--- map('n', '<leader>w', '<cmd>w<cr>', { desc = 'Save file' })
-map({ 'i', 'v', 'n', 's' }, '<C-S>', '<cmd>w<cr><esc>', { desc = 'Save file' })
-
--- lazy
-map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+map('n', '<leader>l', '<Cmd>Lazy<Cr>', { desc = '[L]azy' })
 
 -- Source current file
 map('n', '<leader>s', function()
@@ -74,9 +72,10 @@ map('n', '<leader>s', function()
   elseif vim.bo.filetype == 'zsh' then
     vim.cmd([[silent !exec zsh]])
   end
-end, { desc = 'Source current file' })
+end, { desc = '[S]ource current file' })
 
--- Use `jk` as escape
-map('i', 'jk', '<esc>', { desc = 'Escape' })
+map('n', '<F5>', function()
+  vim.cmd([[normal ]])
+end, { desc = 'Run current file' })
 
 return M

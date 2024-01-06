@@ -1,11 +1,11 @@
 return {
   {
-    'olimorris/onedarkpro.nvim',
+    'ellisonleao/gruvbox.nvim',
     enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd('colorscheme onedark')
+      vim.cmd([[colorscheme gruvbox]])
     end
   }
 }

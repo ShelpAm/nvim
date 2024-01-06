@@ -3,6 +3,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     lazy = false,
+    priority = 1,
     dependencies = {
       'williamboman/mason-lspconfig.nvim'
     },

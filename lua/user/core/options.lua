@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 opt.autoread = true
-opt.autowrite = true    -- Enable auto write
-opt.autowriteall = true -- Enable auto write all the files
-opt.background = 'dark'
+opt.autowrite = false    -- Enable auto write
+opt.autowriteall = false -- Enable auto write all the files
+opt.background = 'light'
 opt.binary = true
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.colorcolumn = { '+0', '+20' }
@@ -49,7 +49,7 @@ opt.splitright = true    -- Put new windows right of current
 opt.swapfile = false
 opt.tabstop = 2          -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
-opt.textwidth = 80
+opt.textwidth = 100
 opt.timeout = true
 opt.timeoutlen = 100
 --opt.undodir = "$XDG_STATE_HOME/nvim/undo/"
@@ -90,7 +90,21 @@ vim.fn.sign_define({
   },
 })
 
-vim.cmd('highlight CursorLine guifg= guibg=')
+-- make zsh files recognized as sh for bash-ls & treesitter
+vim.filetype.add {
+  extension = {
+    hpp = "cpp",
+    ixx = "cpp",
+    zsh = "sh",
+    sh = "sh", -- force sh-files with zsh-shebang to still get sh as filetype
+  },
+  filename = {
+    [".zshrc"] = "sh",
+    [".zshenv"] = "sh",
+  },
+}
+
+vim.cmd('highlight CursorLine guifg= guibg=#f0f2f5')
 
 if vim.fn.has('nvim-0.9.0') == 1 then
   opt.splitkeep = 'screen'

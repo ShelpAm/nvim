@@ -25,7 +25,7 @@ return {
           i = {
           }
         },
-        path_display = { shorten = 3, truncate = 3 },
+        path_display = { shorten = 5, truncate = 5 },
         sorting_strategy = 'ascending',
       },
       pickers = {

@@ -1,7 +1,7 @@
 return {
   {
     'ggandor/leap.nvim',
-    enabled = false,
+    -- enabled = false,
     dependencies = {
       'tpope/vim-repeat',
     },
@@ -28,7 +28,9 @@ return {
           multi_revert = '<backspace>',
         }
       }
-      require('leap').add_default_mappings()
+      -- require('leap').add_default_mappings()
+      vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward-to)')
+      vim.keymap.set({ 'n', 'x', 'o' }, 'F', '<Plug>(leap-backward-to)')
     end
   },
 }

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
     branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -10,7 +11,8 @@ return {
     keys = {
       -- See :h neo-tree-commands
       --{ '<leader>e', '<Cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true<Cr>' },
-      { '<leader>e', '<Cmd>Neotree action=focus source=filesystem float toggle=true reveal=true<Cr>' },
+      { '<leader>e',
+        '<Cmd>Neotree action=focus source=filesystem position=float toggle=true dir=%:p:h reveal_force_cwd=true<Cr>' },
     },
     config = function()
       vim.g.neo_tree_remove_legacy_commands = 1
@@ -33,7 +35,7 @@ return {
             enable_character_fade = true
           },
           indent = {
-            indent_size = 2,
+            indent_size = 4,
             padding = 1, -- extra padding on left hand side
             -- indent guides
             with_markers = true,
@@ -82,7 +84,7 @@ return {
         },
         window = {
           position = "right",
-          width = 30,
+          width = 60,
           mapping_options = {
             noremap = true,
             nowait = true,
@@ -143,7 +145,7 @@ return {
         filesystem = {
           filtered_items = {
             visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = false,
             hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
