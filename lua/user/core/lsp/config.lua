@@ -21,6 +21,7 @@ M.servers = {
   'bashls',
   'clangd',
   'cmake',
+  'csharp_ls',
   'lua_ls',
   'pyright',
   'quick_lint_js',
