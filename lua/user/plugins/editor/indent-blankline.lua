@@ -9,7 +9,7 @@ return {
           show_start = false,
           show_end = false,
         },
-        indent = { char = '▏' },
+        -- indent = { char = '▏' },
       })
 
 
